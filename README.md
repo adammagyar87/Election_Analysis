@@ -30,3 +30,37 @@ The election audit results demonstrate:
 
 ## Election Audit Summary
 
+Screen grab of the terminal seen below:
+
+![image](https://user-images.githubusercontent.com/87042597/134835370-a6091a71-8eb1-4dac-aff3-40aa6aa40408.png)
+
+The results are also printed to the election_results.txt file in the "analysis" folder. This script can be re-utilized for other elections with minor changes. The filepath and filenames after "file_to_load" and "file_to_save" will need to be customized for each specific case. The specific section of the code is in lines 4 - 7 seen below:
+
+```
+# Assign a variable to load a file from a path.
+file_to_load = os.path.join("Resources", "election_results.csv")
+# Assign a variable to save the file to a path.
+file_to_save = os.path.join("analysis", "election_analysis.txt")
+```
+
+Other changes that may be needed for clarity would be the names of the variables. This code was written with this specific election in mind. If this were a city wide election, the use of "counties" in the code could cause confusion. 
+
+Another similar example would be the variables where specific wording is held and printed to the terminal and the output text file. An example from lines 80 - 92 is seen below:
+
+```
+# Save the results to our text file.
+with open(file_to_save, "w") as txt_file:
+
+    # Print the final vote count (to terminal)
+    election_results = (
+        f"\nElection Results\n"
+        f"-------------------------\n"
+        f"Total Votes: {total_votes:,}\n"
+        f"-------------------------\n\n"
+        f"County Votes:\n")
+    print(election_results, end="")
+
+    txt_file.write(election_results)
+  ```
+  
+ This wording would not work in different types of elections.
